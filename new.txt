@@ -1,0 +1,44 @@
+/priv-celebrations-app/
+|
+├── /client/              # React Frontend Application
+|   ├── /public/
+|   ├── /src/
+|   |   ├── /assets/        # CSS, Images, etc.
+|   |   |   └── main.css
+|   |   |   └── admin.css
+|   |   ├── /components/    # Reusable UI Components
+|   |   |   ├── /main/        # Components for the customer site
+|   |   |   └── /admin/       # Components for the admin dashboard
+|   |   ├── /pages/         # Page-level components
+|   |   |   ├── MainWebsite.js
+|   |   |   ├── AdminLogin.js
+|   |   |   └── AdminDashboard.js
+|   |   ├── /services/      # API communication logic
+|   |   |   └── api.js
+|   |   ├── App.js          # Main component with routing
+|   |   └── index.js        # Entry point for React
+|   ├── .env              # Environment variables for client
+|   └── package.json
+|
+└── /server/              # Node.js/Express Backend API
+    ├── /db/
+    |   └── index.js        # PostgreSQL connection setup
+    ├── /middleware/
+    |   └── authMiddleware.js # JWT authentication verifier
+    ├── /routes/
+    |   ├── admin.js        # Secure admin routes
+    |   ├── auth.js         # Login route
+    |   └── public.js       # Publicly accessible routes
+    ├── /controllers/
+    |   ├── adminController.js
+    |   ├── authController.js
+    |   └── publicController.js
+    ├── .env              # Environment variables for server
+    ├── server.js         # The main Express server file
+    └── package.json
+
+    --Aadhya@2050
+
+    postgresql://postgres:[YOUR-PASSWORD]@db.gcujwgvuiihrjfzcyxhq.supabase.co:5432/postgres
+
+    admin -   $2a$10$fPLd5m6QGeg5fDxB/1cZ2.iLw2sl2n.VnO/l3w2sSU2s43x5gI4v.
