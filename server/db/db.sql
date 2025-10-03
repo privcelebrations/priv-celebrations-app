@@ -114,9 +114,8 @@ ALTER SEQUENCE contacts_id_seq RESTART WITH 1;
 -- Insert a default admin user
 -- IMPORTANT: This hash is for a specific password. If you want to change the password,
 -- you must generate a new hash using the /server/hashPassword.js script.
-INSERT INTO users (username, password_hash) VALUES 
-('admin', '$2a$10$YourUniqueGeneratedHashStringShouldGoHere.123abc'); -- Replace with your own generated hash
-
+INSERT INTO users (username, password_hash) VALUES ('admin', '$2a$10$fPLd5m6QGeg5fDxB/1cZ2.iLw2sl2n.VnO/l3w2sSU2s43x5gI4v.'); -- Replace with your own generated hash
+INSERT INTO users (username, password_hash) VALUES ('admin1', '$2a$10$wEGR.c8h225b0mX92z8XHe0T.V0c3a/3USs53.2I8xUnlE5.t4XfG');
 
 -- Insert initial data for Theatres
 INSERT INTO theatres (name, subtitle, description, details, price, images) VALUES 
