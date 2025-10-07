@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WhatsAppButton = () => {
-    const whatsappUrl = "https://api.whatsapp.com/send/?phone=918297642050&text=Hi%21+I%27m+interested+in+booking+a+private+theatre+experience.+Can+you+help+me%3F&type=phone_number&app_absent=0";
+    const whatsappUrl = "https://api.whatsapp.com/send/?phone=918121012020&text=Hi%21+I%27m+interested+in+booking+a+private+theatre+experience.+Can+you+help+me%3F&type=phone_number&app_absent=0";
 
     return (
         <a 
