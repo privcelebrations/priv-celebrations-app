@@ -35,7 +35,7 @@ const Contact = () => {
                         <div className="contact-item">
                             <h4>Call Us</h4>
                             <p>
-                                <a href="tel:+918121012020">+91 82976 42050</a><br/>
+                                <a href="tel:+918121012020">+91 81210 12020</a><br/>
                                 <span style={{ fontSize: '0.9em', color: 'var(--accent-color)' }}>
                                     Available 24/7 for bookings
                                 </span>
