@@ -35,7 +35,7 @@ const Contact = () => {
                         <div className="contact-item">
                             <h4>Call Us</h4>
                             <p>
-                                <a href="tel:+918297642050">+91 82976 42050</a><br/>
+                                <a href="tel:+918121012020">+91 82976 42050</a><br/>
                                 <span style={{ fontSize: '0.9em', color: 'var(--accent-color)' }}>
                                     Available 24/7 for bookings
                                 </span>
@@ -44,7 +44,7 @@ const Contact = () => {
                         <div className="contact-item">
                             <h4>WhatsApp</h4>
                             <p>
-                                <a href="https://wa.me/918297642050" target="_blank" rel="noopener noreferrer">+91 82976 42050</a><br/>
+                                <a href="https://wa.me/918121012020" target="_blank" rel="noopener noreferrer">+91 81210 12020</a><br/>
                                 <span style={{ fontSize: '0.9em', color: 'var(--accent-color)' }}>
                                     Instant responses guaranteed
                                 </span>
