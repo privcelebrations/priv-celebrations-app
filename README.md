@@ -1,9 +1,3 @@
-Of course. A detailed `README.md` file is essential for any professional project. It serves as the main entry point for developers (including your future self) to understand, set up, and run the application.
-
-Here is a complete, well-structured `README.md` file for your PRIV Celebrations web application. You can copy this entire content into a new file named `README.md` in the root directory of your project (`/priv-celebrations-app/`).
-
----
-
 # PRIV Celebrations - Private Theatre Booking Platform
 
 This repository contains the complete source code for the PRIV Celebrations web application, a full-stack platform for booking and managing private theatre experiences. The application is built with a modern tech stack, featuring a React frontend, a Node.js/Express backend API, and a PostgreSQL database.
