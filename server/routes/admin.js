@@ -7,6 +7,9 @@ const upload = require('../middleware/uploadMiddleware');
 router.get('/analytics', auth, adminController.getAnalytics);
 router.get('/chart-data', auth, adminController.getChartData);
 router.get('/bookings', auth, adminController.getBookings);
+// --- NEW ROUTE ---
+// This route will handle updating the status of a booking by its ID.
+router.put('/bookings/:id/status', auth, adminController.updateBookingStatus);
 router.get('/contacts', auth, adminController.getContacts);
 
 
