@@ -145,6 +145,33 @@ exports.getContacts = async (req, res) => {
     }
 };
 
+// --- NEW FUNCTION for Booking Status ---
+exports.updateBookingStatus = async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    // A list of allowed statuses to prevent invalid data
+    const allowedStatuses = ['Pending', 'Confirmed', 'In Progress', 'Completed', 'Cancelled'];
+    if (!status || !allowedStatuses.includes(status)) {
+        return res.status(400).json({ msg: 'Invalid status provided.' });
+    }
+
+    try {
+        const updatedBooking = await db.query(
+            "UPDATE bookings SET status = $1 WHERE id = $2 RETURNING *",
+            [status, id]
+        );
+
+        if (updatedBooking.rows.length === 0) {
+            return res.status(404).json({ msg: 'Booking not found.' });
+        }
+
+        res.json(updatedBooking.rows[0]);
+    } catch (err) {
+        console.error("Error updating booking status:", err.message);
+        res.status(500).send('Server Error');
+    }
+};
 // --- PACKAGE MANAGEMENT CONTROLLERS ---
 
 exports.getPackages = async (req, res) => {
