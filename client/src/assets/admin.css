@@ -524,3 +524,38 @@ body.admin-body * {
         grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile screens */
     }
 }
+
+/* --- Add these styles at the end of admin.css --- */
+
+/* Status Dropdown Styles */
+.status-select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #333);
+    background-color: var(--bg-dark, #121212);
+    color: var(--text-primary, #fff);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Color coding for different statuses */
+.status-select.status-pending {
+    border-color: #f6e05e; /* Yellow */
+    color: #f6e05e;
+}
+.status-select.status-confirmed {
+    border-color: #48bb78; /* Green */
+    color: #48bb78;
+}
+.status-select.status-in-progress {
+    border-color: #4299e1; /* Blue */
+    color: #4299e1;
+}
+.status-select.status-completed {
+    border-color: #9f7aea; /* Purple */
+    color: #9f7aea;
+}
+.status-select.status-cancelled {
+    border-color: #e53e3e; /* Red */
+    color: #e53e3e;
+}
