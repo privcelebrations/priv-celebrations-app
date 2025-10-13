@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS addons;
 DROP TABLE IF EXISTS packages;
 DROP TABLE IF EXISTS theatres;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS gallery_images;
 
 
 -- STEP 2: CREATE TABLES
@@ -114,7 +115,9 @@ ALTER SEQUENCE contacts_id_seq RESTART WITH 1;
 -- Insert a default admin user
 -- IMPORTANT: This hash is for a specific password. If you want to change the password,
 -- you must generate a new hash using the /server/hashPassword.js script.
-INSERT INTO users (username, password_hash) VALUES ('admin', '$2a$10$fPLd5m6QGeg5fDxB/1cZ2.iLw2sl2n.VnO/l3w2sSU2s43x5gI4v.'); -- Replace with your own generated hash
+-- SQL INSERT script for PostgreSQL
+
+INSERT INTO users (username, password_hash) VALUES ('admin', '$2a$10$EXAMPLEsalt.qRs3T.jK0L1M2N3O4P5Q6R7S8T9U0V1W2X3Y4Z5A6B7C8D9E0F1G2H3');
 INSERT INTO users (username, password_hash) VALUES ('admin1', '$2a$10$wEGR.c8h225b0mX92z8XHe0T.V0c3a/3USs53.2I8xUnlE5.t4XfG');
 
 -- Insert initial data for Theatres
@@ -208,10 +211,6 @@ CREATE TABLE gallery_images (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 COMMENT ON TABLE gallery_images IS 'Stores images uploaded by the admin for the public gallery.';
-
-CREATE TABLE bookings ( /* ... existing bookings table ... */ );
-CREATE TABLE contacts ( /* ... existing contacts table ... */ );
-
 
 -- STEP 3: RESET PRIMARY KEY SEQUENCES
 ALTER SEQUENCE gallery_images_id_seq RESTART WITH 1; -- New

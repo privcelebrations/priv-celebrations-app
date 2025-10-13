@@ -276,8 +276,8 @@ exports.deleteAddon = async (req, res) => {
     }
 };
 
-// --- GALLERY MANAGEMENT CONTROLLERS (NEW) ---
 
+// --- GALLERY MANAGEMENT CONTROLLERS ---
 exports.getGalleryImages = async (req, res) => {
     try {
         const images = await db.query('SELECT * FROM gallery_images ORDER BY id DESC');
@@ -290,10 +290,10 @@ exports.getGalleryImages = async (req, res) => {
 
 exports.uploadGalleryImages = async (req, res) => {
     const { category, caption } = req.body;
-    const files = req.files; // Array of files from multer
+    const files = req.files;
 
     if (!files || files.length === 0) {
-        return res.status(400).json({ msg: 'No images uploaded.' });
+        return res.status(400).json({ msg: 'No images were uploaded.' });
     }
 
     try {
@@ -318,22 +318,19 @@ exports.uploadGalleryImages = async (req, res) => {
 exports.deleteGalleryImage = async (req, res) => {
     const { id } = req.params;
     try {
-        // First, get the image URL from the database to delete the file
         const result = await db.query('SELECT image_url FROM gallery_images WHERE id = $1', [id]);
         if (result.rows.length > 0) {
             const imageUrl = result.rows[0].image_url;
-            const imagePath = path.join(__dirname, '..', imageUrl); // Create absolute path
+            const imagePath = path.join(__dirname, '..', imageUrl);
 
-            // Delete the file from the /uploads folder
+            // Use fs.unlink to delete the file from the /uploads folder
             fs.unlink(imagePath, (err) => {
                 if (err) {
-                    // Log the error but don't stop the process, as the DB entry is more important
-                    console.error("Error deleting image file:", err);
+                    console.error("Error deleting image file (but continuing with DB deletion):", err);
                 }
             });
         }
 
-        // Then, delete the record from the database
         await db.query("DELETE FROM gallery_images WHERE id = $1", [id]);
         res.json({ msg: 'Gallery image deleted successfully' });
 

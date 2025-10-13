@@ -15,8 +15,9 @@ router.get('/contacts', auth, adminController.getContacts);
 
 // --- THEATRE MANAGEMENT ---
 router.get('/theatres', auth, adminController.getTheatres);
-router.post('/theatres', [auth, upload], adminController.createTheatre);
-router.put('/theatres/:id', [auth, upload], adminController.updateTheatre);
+// Tell this route to expect up to 5 files in a field named 'images'
+router.post('/theatres', [auth, upload.array('images', 5)], adminController.createTheatre);
+router.put('/theatres/:id', [auth, upload.array('images', 5)], adminController.updateTheatre);
 router.delete('/theatres/:id', auth, adminController.deleteTheatre);
 
 
@@ -33,9 +34,10 @@ router.post('/addons', auth, adminController.createAddon);
 router.put('/addons/:id', auth, adminController.updateAddon);
 router.delete('/addons/:id', auth, adminController.deleteAddon);
 
-// --- GALLERY MANAGEMENT (NEW) ---
+// --- GALLERY MANAGEMENT ---
 router.get('/gallery', auth, adminController.getGalleryImages);
-router.post('/gallery', [auth, upload], adminController.uploadGalleryImages);
+// Tell this route to expect up to 5 files in a field named 'images'
+router.post('/gallery', [auth, upload.array('images', 5)], adminController.uploadGalleryImages);
 router.delete('/gallery/:id', auth, adminController.deleteGalleryImage);
 
 module.exports = router;

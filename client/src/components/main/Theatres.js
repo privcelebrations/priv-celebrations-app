@@ -1,9 +1,11 @@
 import React from 'react';
 
 const Theatres = ({ theatres, onCardClick }) => {
-    // Construct the base URL for images from the environment variable.
-    // This removes the hardcoded 'http://localhost:5000'.
-    const apiBaseUrl = process.env.REACT_APP_API_URL.replace('/api', '');
+    // --- THIS IS THE KEY FIX ---
+    // We check if process.env.REACT_APP_API_URL exists.
+    // If it does, we use it. If not, we fall back to an empty string ('').
+    // This prevents the '.replace()' function from being called on 'undefined'.
+    const apiBaseUrl = (process.env.REACT_APP_API_URL || '').replace('/api', '');
 
     return (
         <div id="page-theatres" className="page active">
@@ -15,8 +17,6 @@ const Theatres = ({ theatres, onCardClick }) => {
                 <div className="grid">
                     {theatres.map((theatre, i) => {
                         // Dynamically construct the full image URL.
-                        // If an image path exists, prepend the full server URL to it.
-                        // Otherwise, use a placeholder.
                         const imageUrl = theatre.images && theatre.images[0] 
                             ? `${apiBaseUrl}${theatre.images[0]}` 
                             : 'https://via.placeholder.com/400x300.png?text=PRIV+Theatre';
@@ -38,7 +38,7 @@ const Theatres = ({ theatres, onCardClick }) => {
                                     <h3>{theatre.name}</h3>
                                     <p>{theatre.description}</p>
                                     <ul>
-                                        {/* Added optional chaining ?. to prevent crash if details is null */}
+                                        {/* Added optional chaining ?. to prevent a crash if 'details' is null */}
                                         {theatre.details?.slice(0, 4).map((detail, index) => <li key={index}>{detail}</li>)}
                                     </ul>
                                     <div className="price">₹{theatre.price}</div>
